@@ -1,13 +1,41 @@
-<ActionBar class="action-bar">
-    <NavigationButton visibility="hidden"></NavigationButton>
-    <GridLayout columns="50, *">
-        <Label class="action-bar-title" text="Home" colSpan="2"></Label>
+<ActionBar>
+  <NavigationButton visibility="hidden"></NavigationButton>
+  <GridLayout columns="50, *">
+    <Label class="action-bar-title" text="Home" colSpan="2"></Label>
 
-        <Label class="fas" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
-    </GridLayout>
+    <Label class="fas" text="&#xf0c9;"></Label>
+  </GridLayout>
 </ActionBar>
 
-<GridLayout class="page__content">
-  <Label class="page__content-icon fas" text="&#xf015;"></Label>
-  <Label class="page__content-placeholder" text="<!-- Page content goes here -->"></Label>
-</GridLayout>
+<MDTabs tabsPosition="bottom">
+  <!-- The bottom tab UI is created via TabStrip (the containier) and TabStripItem (for each tab)-->
+  <MDTabStrip>
+    <MDTabStripItem>
+      <Label text="Featured"></Label>
+      <Image src="font://&#xf015;" class="fas"></Image>
+    </MDTabStripItem>
+    <MDTabStripItem class="special">
+      <Label text="Account"></Label>
+      <Image src="font://&#xf007;" class="fas"></Image>
+    </MDTabStripItem>
+    <MDTabStripItem class="special">
+      <Label text="Search"></Label>
+      <Image src="font://&#xf00e;" class="fas"></Image>
+    </MDTabStripItem>
+  </MDTabStrip>
+
+  <!-- The number of TabContentItem components should corespond to the number of TabStripItem components -->
+  <MDTabContentItem>
+    <page-router-outlet name="featuredTab"></page-router-outlet>
+  </MDTabContentItem>
+  <MDTabContentItem>
+    <GridLayout>
+      <Label text="Account Page" class="h2 text-center"></Label>
+    </GridLayout>
+  </MDTabContentItem>
+  <MDTabContentItem>
+    <GridLayout>
+      <Label text="Search Page" class="h2 text-center"></Label>
+    </GridLayout>
+  </MDTabContentItem>
+</MDTabs>
